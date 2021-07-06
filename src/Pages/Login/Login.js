@@ -16,10 +16,9 @@ const Login = () => {
         onSubmit: values => {
             const searchURL = "https://jsonplaceholder.typicode.com/users/1";
             axios.get(searchURL).then(response => {
-                let email = response.data.email;
-                console.log(email)
+                let userId = response.data.id;
                 localStorage.setItem('data', JSON.stringify(response, null, 2));
-                history.push("/posts:"+email)
+                history.push("/posts:"+userId)
             });
         
         },

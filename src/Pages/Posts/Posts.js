@@ -6,16 +6,10 @@ import All from '../../Components/All/All';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-
-
 const Posts = ({ data }) => {
     const [tabKey, setTabKey] = useState('')
     const [posts, setPosts] = useState()
     const [userId, setUserid] = useState()
-
-
-
-
 
     useEffect(()=>{
         const searchURL = "https://jsonplaceholder.typicode.com/posts";
@@ -24,8 +18,6 @@ const Posts = ({ data }) => {
          
         });
     },[data])
-
-
 
     return (
         <div className='p-posts'>
@@ -51,7 +43,6 @@ const Posts = ({ data }) => {
                         posts ={posts}
                     />
                 }
-
             </Container>
         </div>
     );
