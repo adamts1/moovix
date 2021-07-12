@@ -5,29 +5,27 @@ import Posts from './Pages/Posts/Posts'
 import { HashRouter, Route, Switch } from "react-router-dom";
 import { useState, useEffect } from 'react';
 
-
-
-
 function App() {
-  const [data, setData] = useState()
+  const [token, setToken] = useState()
 
-  useEffect(()=>{
-    const data = localStorage.getItem('data')
-
-    if(data){
-      setData(JSON.parse(data))
-     }
-    },[])
-
+  useEffect(() => {
+    window.localStorage.removeItem('token');
+  }, [])
 
   return (
     <div className="App">
       <HashRouter>
         <Switch >
-          <Route exact path="/"><Login/></Route>
-          <Route exact path="/posts:index"><Posts
-            data = {data}
-          /></Route>
+          <Route exact path="/">
+            <Login
+              setToken={(token) => setToken(token)}
+            />
+          </Route>
+          <Route exact path="/posts:index">
+            <Posts
+              token={token}
+            />
+          </Route>
         </Switch>
       </HashRouter>
     </div>

@@ -2,16 +2,23 @@ import './All.css';
 import PostCard from './../PostCard/PostCard';
 
 
-const All = ({ posts }) => {
+const All = ({ posts, savePost }) => {
+
     return (
-        <div className='c-all'>
+        <div>
+            {posts
+            ? <div className='c-all'>
             {posts.map(post =>
                 <PostCard
-                    title={post.title}
-                    body={post.body}
-    
+                    key={post.id}       
+                    post = {post}
+                    type="all"
+                    savePost={savePost}
                 />
             )}
+            </div>
+            : <h1>No Posts</h1>
+            }
 
         </div>
     );

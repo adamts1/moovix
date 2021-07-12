@@ -1,7 +1,43 @@
-
-
-.c-postcard{
+.c-postcard {
     margin: 30px;
-border: 2px dotted;
+    border: 2px dotted;
+    position: relative;
+}
+
+.c-postcard .card{
+    /* height: 100px; */
+    max-height: max-content;
+}
+
+.c-postcard button{
+    margin: 10px;
+    padding: 8px;
+    width: 101px;
+    font-weight: bold;
+    border-radius: 18px;
+    border: 0;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+
+.c-postcard .card-body{
+    padding: 20px;
+}
+
+.dataInfo{
+    margin-top: 20px;
+    text-align: left;
+}
+
+.c-postcard .button-warper{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 
 }
+
+
+

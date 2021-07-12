@@ -3,6 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import axios from 'axios';
+
+
+
+axios.interceptors.request.use(function (config) {
+  const myStorage = localStorage.getItem('token');
+  config.headers.Authorization =  myStorage;
+  return config
+});
 
 ReactDOM.render(
   <React.StrictMode>

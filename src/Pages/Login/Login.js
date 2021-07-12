@@ -1,30 +1,27 @@
 import './Login.css'
 import { useFormik } from 'formik';
 import axios from 'axios';
-import { useHistory  } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { Link, Redirect } from 'react-router-dom';
 
 
-
-const Login = () => {
+const Login = ({setToken}) => {
     const history = useHistory();
-
-
     const formik = useFormik({
         initialValues: {
             email: '',
         },
         onSubmit: values => {
+            setToken(values.email);
             const searchURL = "https://jsonplaceholder.typicode.com/users/1";
             axios.get(searchURL).then(response => {
-                let userId = response.data.id;
-                localStorage.setItem('data', JSON.stringify(response, null, 2));
-                history.push("/posts:"+userId)
+                localStorage.setItem('token', response.data.email); 
+                history.push("/posts:" + response.data.id)
             });
-        
         },
     });
-    return (
 
+    return (
         <div className='p-login'>
             <h1>Login</h1>
             <form onSubmit={formik.handleSubmit}>
@@ -44,7 +41,6 @@ const Login = () => {
                     name="password"
                     type="password"
                     required
-
                     onChange={formik.handleChange}
                     value={formik.values.password}
                 />
